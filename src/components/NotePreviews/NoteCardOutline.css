@@ -1,0 +1,39 @@
+a.note-card {
+    width: 250px;
+    background-color: #ececec;
+    padding: 0.4rem 0.8rem;
+    margin-top: 1.5rem;
+    color: var(--SECONDARY-TEXT-COLOR);
+}
+
+a.note-card > .date {
+    font-size: 12px;
+    font-weight: 700;
+}
+
+a.note-card > h2 {
+    text-decoration: underline;
+    margin-top: 0.5rem;
+}
+
+a.note-card > .text {
+    margin-top: 0.2rem;
+}
+
+a.note-card > ul {
+    list-style-type: none;
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+a.note-card > ul > li {
+    background-color: #fff;
+    padding: 0.2rem 0.4rem;
+}
+
+
+a.note-card.selected {
+    color: var(--PRIMARY-TEXT-COLOR)
+}
+

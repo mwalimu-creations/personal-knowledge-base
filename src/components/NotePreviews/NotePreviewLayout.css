@@ -1,0 +1,18 @@
+
+a.add-new-note {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    color: var(--PRIMARY-TEXT-COLOR);
+    margin-top: 3.4rem;
+    background-color: var(--SECONDARY-TEXT-COLOR);
+    width: 250px;
+    padding: 0.4rem 0.8rem;
+}
+
+.note-previews {
+    height: 700px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    /* To-Do: Fix the cards to show x more if they don't fit the width of the card */
+}

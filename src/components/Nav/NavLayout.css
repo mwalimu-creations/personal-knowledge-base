@@ -1,0 +1,21 @@
+section.owner-info {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+section.owner-info > img {
+    width: 35px;
+    height: 35px;
+}
+
+input.search-notes {
+    background-image: url('../../assets/images/search.svg');
+    background-position: 10px;
+    background-size: 12px;
+    background-repeat: no-repeat;
+    width: 250px;
+    padding: 0.4rem 2rem;
+    font: inherit;
+    margin-top: 3rem;
+}

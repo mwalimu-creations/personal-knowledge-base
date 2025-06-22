@@ -1,0 +1,4 @@
+section.note-section {
+    display: flex;
+    gap: 1rem;
+}

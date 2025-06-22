@@ -1,0 +1,31 @@
+.nav-card {
+    display: flex;
+    align-items: center;
+    color: var(--SECONDARY-TEXT-COLOR);
+    gap: 1rem;
+    width: 250px;
+    position: relative;
+    margin-top: 1.5rem;
+    padding: 0.5rem 1rem;
+}
+
+.nav-card > .more-info {
+    position: absolute;
+    right: 25px;
+}
+
+.nav-card.notes {
+    margin-top: 5rem;
+}
+
+.nav-card.add-new-folder {
+    margin-top: 15rem;
+}
+
+.nav-card.add-new-folder, .nav-card.settings {
+    color: var(--PRIMARY-TEXT-COLOR);
+}
+
+.nav-card.selected {
+    color: var(--PRIMARY-TEXT-COLOR)
+}
