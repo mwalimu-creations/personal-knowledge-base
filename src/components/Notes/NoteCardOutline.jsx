@@ -8,8 +8,6 @@ export default function NoteCardOutline(props) {
         <NavLink
             to={`${props.id}`}
             className={({ isActive }) => isActive ? 'selected note-card' : 'note-card'}
-            state={{id:props.id}}
-
         >
             <p className='date'>{props.date}</p>
             <h2>{props.heading}</h2>

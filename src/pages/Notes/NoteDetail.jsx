@@ -1,5 +1,5 @@
 import './NoteDetail.css'
-import { useLocation, Link, Outlet } from "react-router-dom"
+import { useLocation, Link, Outlet, useParams } from "react-router-dom"
 import { NoteContext } from './NoteLayout'
 import { useContext, useEffect, useState } from "react"
 import { nanoid } from 'nanoid'
@@ -7,11 +7,11 @@ import { nanoid } from 'nanoid'
 export default function NoteDetail() {
     const [showInput, setShowInput] = useState(false)
     const [tags, setTags] = useState([])
-    const location = useLocation()
+    const {id} = useParams()
     const { notes } = useContext(NoteContext)
-    const noteDetail = location.state?.id ? notes.find(note => note.id === location.state?.id) : null
+    const noteDetail = notes ? notes.find(note => String(note.id) === String(id)) : null
 
-
+    
     useEffect(() => {
         if (noteDetail) {
             setTags(noteDetail.tags)

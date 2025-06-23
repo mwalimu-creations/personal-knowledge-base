@@ -1,5 +1,5 @@
 import { MdEdit } from "react-icons/md";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, useLocation } from "react-router-dom";
 
 export default function NoteDetailLayout() {
     return (
