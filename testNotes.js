@@ -2,8 +2,9 @@ export const testNotes = [
     {
         id: 1,
         title: "Newton's Laws",
-        text: "An object at rest stays at rest and an object in motion stays in motion unless acted upon by a force.",
+        text: "Newton's first law of motion, also known as the law of inertia, states that an object at rest remains at rest, and an object in motion remains in motion at a constant speed and in a straight line unless acted on by an unbalanced force. This law highlights the inherent resistance of objects to changes in their state of motion, a property known as inertia. For example, an aircraft in flight is subject to four major forces: lift, weight, thrust, and drag, and it will continue in its current state of motion unless these forces become unbalanced. Similarly, a hockey puck on an ice surface will continue to slide until friction or another force acts upon it. In everyday life, this law can be observed in various scenarios, such as when a car suddenly stops and passengers tend to move forward due to their inertia. Another example is an electric fan continuing to spin for a short time after the power is turned off. Newton's first law is fundamental to classical mechanics and provides the basis for understanding how objects behave in the absence of external forces. It is also crucial in identifying inertial reference frames, where an object's motion remains unchanged unless influenced by an external force.",
         tags: ["physics", "science"],
+        subTitle: "Newtons First Law of Motion",
         date: "2025-06-01"
     },
     {

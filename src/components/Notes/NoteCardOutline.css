@@ -17,7 +17,13 @@ a.note-card > h2 {
 }
 
 a.note-card > .text {
+    display: -webkit-box;
     margin-top: 0.2rem;
+    line-clamp: 4;
+    -webkit-line-clamp: 4;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
 }
 
 a.note-card > ul {

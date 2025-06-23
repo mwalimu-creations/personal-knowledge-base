@@ -1,0 +1,44 @@
+section.note-detail > h1 {
+    font-size: 30px;
+    margin-bottom: 1rem;
+}
+
+section.note-detail > h2 {
+    margin: 1rem 0;
+    font-weight: 500;
+}
+
+section.note-detail > p, section.note-detail > ul {
+    color: var(--SECONDARY-TEXT-COLOR);
+}
+
+section.note-detail > p{
+    margin-bottom: 0.5rem;
+}
+
+section.note-detail > p > strong{
+    color: var(--PRIMARY-TEXT-COLOR);
+}
+
+.note-detail > ul, .edit-note-detail > ul {
+ list-style-type: none;
+ display: flex;
+ gap: 0.7rem;
+ flex-flow: row wrap;
+ margin-bottom: 2rem;
+ align-items: center;
+}
+
+section.note-detail > ul > li {
+    
+    background-color: #ececec;
+    padding: 0.4rem 0.8rem;
+    cursor: default;
+}
+
+.add-more-btn > a {
+    display: block;
+    cursor: pointer;
+    color: var(--PRIMARY-TEXT-COLOR);
+}
+

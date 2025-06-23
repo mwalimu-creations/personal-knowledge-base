@@ -1,10 +1,9 @@
-import './NotePreviewLayout.css'
+import './NotePreview.css'
 import { Link } from 'react-router-dom'
 import { FaPlus } from "react-icons/fa6"
-import { testNotes } from '../../../testNotes'
 import { useContext } from 'react'
-import { NoteContext } from '../../pages/Notes/NoteLayout'
-import NoteCardOutline from './NoteCardOutline'
+import { NoteContext } from './NoteLayout'
+import NoteCardOutline from '../../components/Notes/NoteCardOutline'
 
 export default function NotePreviewLayout() {
     const {notes} = useContext(NoteContext)

@@ -1,0 +1,30 @@
+.add-more-btn:hover {
+    box-shadow: 5px 5px 20px #000;
+}
+
+.edit-note-detail > label, .edit-note-detail > label > input, .edit-note-detail > textarea{
+    display: block;
+    font: inherit;
+}
+
+.edit-note-detail > label > input, .edit-note-detail > textarea {
+    padding: 0.2rem 0.8rem;
+}
+
+.edit-note-detail > label {
+    font-weight: 700;
+}
+
+.edit-note-detail > label > input {
+    border-radius: 0;
+    margin-top: 0.2rem;
+    font-weight: 400;
+    
+    
+}
+
+.edit-note-detail > textarea {
+    margin-top: 1rem;
+    min-width: fit-content;
+    min-width: 500px;
+}
