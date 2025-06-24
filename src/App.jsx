@@ -4,6 +4,8 @@ import NoteLayout from './pages/Notes/NoteLayout'
 import NoteDetail from './pages/Notes/NoteDetail'
 import NoteDetailLayout from './components/Notes/NoteDetailLayout'
 import EditNote from './pages/Notes/EditNote'
+import AddNote from './pages/Notes/AddNote'
+import AddTag from './pages/Notes/AddTag'
 export default function App() {
     return (
         <BrowserRouter>
@@ -11,9 +13,11 @@ export default function App() {
                 <Route path='/' element={<HomeLayout />}>
                     <Route path='*'>
                         <Route path='notes' element={<NoteLayout />}>
-                            <Route path='new-note' />
+                            <Route path='new-note' element={<AddNote/>}/>
                             <Route path=':id' element={< NoteDetailLayout />}>
-                                <Route index element={<NoteDetail />}/>
+                                <Route path='' element={<NoteDetail />}>
+                                    <Route path='add-tag' element={<AddTag/>}/>
+                                </Route>
                                 <Route path='edit-note' element={< EditNote/>}/>
                             </Route>
                         </Route>

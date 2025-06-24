@@ -2,20 +2,20 @@
     box-shadow: 5px 5px 20px #000;
 }
 
-.edit-note-detail > label, .edit-note-detail > label > input, .edit-note-detail > textarea{
+.note-detail-form > label, .note-detail-form > label > input, .note-detail-form > textarea{
     display: block;
     font: inherit;
 }
 
-.edit-note-detail > label > input, .edit-note-detail > textarea {
+.note-detail-form > label > input, .note-detail-form > textarea {
     padding: 0.2rem 0.8rem;
 }
 
-.edit-note-detail > label {
+.note-detail-form > label {
     font-weight: 700;
 }
 
-.edit-note-detail > label > input {
+.note-detail-form > label > input {
     border-radius: 0;
     margin-top: 0.2rem;
     font-weight: 400;
@@ -23,14 +23,14 @@
     
 }
 
-.edit-note-detail > textarea {
+.note-detail-form > textarea {
     margin-top: 1rem;
     min-width: fit-content;
     min-width: 500px;
     min-height: 500px;
 }
 
-.edit-note-detail > .submit {
+.note-detail-form > .submit {
     padding: 0.5rem 1rem;
     margin-top: 1rem;
     border-radius: 5px;

@@ -1,7 +1,7 @@
-import './EditNote.css'
 import { useContext, useEffect, useState } from "react"
 import { useParams, useNavigate } from "react-router-dom"
 import { NoteContext } from './NoteLayout'
+import AddOrEditNote from '../../components/Notes/AddOrEditNote'
 
 export default function EditNote() {
     const { id } = useParams()
@@ -17,9 +17,10 @@ export default function EditNote() {
             setNoteText(noteDetail.text || '')
             setNoteTitle(noteDetail.title || '')
             setNoteSubtitle(noteDetail.subTitle || '')
+
         }
     }, [noteDetail])
-    
+
 
     function submit(formdata) {
         const newNote = {
@@ -31,7 +32,7 @@ export default function EditNote() {
 
         setNotes(prevNotes => prevNotes.map(prevNote => String(prevNote.id) === String(id) ? newNote : prevNote))
         navigate('..')
-    }   
+    }
 
 
     if (!noteDetail) {
@@ -40,32 +41,16 @@ export default function EditNote() {
 
 
     return (
-        <form
-            action={submit}
-            className='edit-note-detail'
-        >
-            <label htmlFor="heading">Heading:
-                <input
-                    type="text"
-                    name='heading'
-                    className='heading'
-                    id='heading'
-                    value={noteTitle}
-                    onChange={(e) => setNoteTitle(e.currentTarget.value)} /></label>
-            <label htmlFor="sub-title">Sub Title:
-                <input
-                    type="text"
-                    name='sub-title'
-                    className='sub-title'
-                    id='sub-title'
-                    value={noteSubtitle}
-                    onChange={(e) => setNoteSubtitle(e.currentTarget.value)} /></label>
-            <textarea
-                name="note-text"
-                id="note-text"
-                value={noteText}
-                onChange={(e) => setNoteText(e.target.value)} />
-            <input type="submit" className='submit' />
-        </form>
+        <AddOrEditNote
+            noteTitle={noteTitle}
+            setNoteTitle={setNoteTitle}
+            noteSubtitle={noteSubtitle}
+            setNoteSubtitle={setNoteSubtitle}
+            noteText={noteText}
+            setNoteText={setNoteText}
+            submit={submit}
+        > 
+
+        </AddOrEditNote>
     )
 }
