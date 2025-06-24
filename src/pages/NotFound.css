@@ -1,0 +1,28 @@
+section.not-found {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;
+    width: 100%;
+    padding: 2rem;
+    text-align: center;
+    gap: 2rem;
+}
+
+section.not-found > img {
+    width: 50%;
+}
+
+section.not-found > h1 {
+    color: red
+}
+section.not-found > a {
+    color: var(--SECONDARY-TEXT-COLOR);
+    background-color: rgb(207, 209, 209);
+    padding: 1rem 2rem;
+    border-radius: 5px;
+}
+
+section.not-found > a:hover {
+    box-shadow: 1px 1px 15px #000;
+}

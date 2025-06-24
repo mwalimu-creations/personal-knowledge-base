@@ -1,26 +1,37 @@
-import { ImPower } from "react-icons/im";
 import AddOrEditNote from "../../components/Notes/AddOrEditNote";
 import { useState, useContext } from "react";
-import { NoteContext } from "./NoteLayout";
-import { nanoid } from "nanoid";
 import { useNavigate } from "react-router-dom";
+import { NoteContext } from "./NoteLayout";
 export default function AddNote() {
-    const {notes, setNotes} = useContext(NoteContext)
+    const { setNotes } = useContext(NoteContext)
     const [noteTitle, setNoteTitle] = useState('')
     const [noteSubtitle, setNoteSubtitle] = useState('')
     const [noteText, setNoteText] = useState('')
     const [noteImages, setNoteImages] = useState('')
     const navigate = useNavigate()
+
+    async function createNote(note) {
+        try {
+            const res = await fetch('http://localhost:8000/api/notes/', {
+                headers: { 'Content-Type': 'application/json' },
+                method: 'POST',
+                body: JSON.stringify(note)
+            })
+            if (!res.ok) throw new Error('failed to create note')
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
     function submit() {
         const newNote = {
-        id: nanoid(),
-        noteTitle: noteTitle,
-        noteSubtitle: noteSubtitle,
-        noteText: noteText
-    }
-    console.log(newNote)
-    setNotes(prevNotes=>[...prevNotes, newNote])
-    navigate(`/notes/${newNote.id}`)
+            title: noteTitle,
+            subtitle: noteSubtitle,
+            text: noteText
+        }
+        createNote(newNote)
+        setNotes(prevNotes => [newNote,...prevNotes])
+        navigate(`/notes`)
     }
 
 

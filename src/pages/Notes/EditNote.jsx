@@ -1,44 +1,30 @@
-import { useContext, useEffect, useState } from "react"
-import { useParams, useNavigate } from "react-router-dom"
-import { NoteContext } from './NoteLayout'
+import { useContext, useState } from "react"
+import { useNavigate, useOutletContext, useParams } from "react-router-dom"
 import AddOrEditNote from '../../components/Notes/AddOrEditNote'
+import { NoteContext } from "./NoteLayout"
 
 export default function EditNote() {
     const { id } = useParams()
-    const { notes, setNotes } = useContext(NoteContext)
-    const noteDetail = notes ? notes.find(note => String(note.id) === String(id)) : null
-    const [noteText, setNoteText] = useState('')
-    const [noteTitle, setNoteTitle] = useState('')
-    const [noteSubtitle, setNoteSubtitle] = useState('')
+    const { setNotes } = useContext(NoteContext)
+    const [note, setNote, updateNote] = useOutletContext()
+    const [noteText, setNoteText] = useState(note.text || '')
+    const [noteTitle, setNoteTitle] = useState(note.title || '')
+    const [noteSubtitle, setNoteSubtitle] = useState(note.subtitle || '')
     const navigate = useNavigate()
 
-    useEffect(() => {
-        if (noteDetail) {
-            setNoteText(noteDetail.text || '')
-            setNoteTitle(noteDetail.title || '')
-            setNoteSubtitle(noteDetail.subTitle || '')
-
-        }
-    }, [noteDetail])
-
-
-    function submit(formdata) {
+    function submit() {
         const newNote = {
-            ...noteDetail,
+            ...note,
             title: noteTitle,
-            subTitle: noteSubtitle,
+            subtitle: noteSubtitle,
             text: noteText
         }
 
-        setNotes(prevNotes => prevNotes.map(prevNote => String(prevNote.id) === String(id) ? newNote : prevNote))
+        setNote(newNote)
+        setNotes(prevNotes=>prevNotes.map( prevNote=>String(prevNote.id) === String(id) ? newNote : prevNote))
+        updateNote(newNote)
         navigate('..')
     }
-
-
-    if (!noteDetail) {
-        return <p>No note selected or loading...</p>;
-    }
-
 
     return (
         <AddOrEditNote
@@ -49,7 +35,7 @@ export default function EditNote() {
             noteText={noteText}
             setNoteText={setNoteText}
             submit={submit}
-        > 
+        >
 
         </AddOrEditNote>
     )

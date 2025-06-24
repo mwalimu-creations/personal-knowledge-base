@@ -1,3 +1,6 @@
+section.note-detail {
+    position: relative;
+}
 section.note-detail > h1 {
     font-size: 30px;
     margin-bottom: 1rem;
@@ -20,7 +23,7 @@ section.note-detail > p > strong{
     color: var(--PRIMARY-TEXT-COLOR);
 }
 
-.note-detail > ul, .edit-note-detail > ul {
+.note-detail > ul {
  list-style-type: none;
  display: flex;
  gap: 0.7rem;
@@ -41,4 +44,25 @@ section.note-detail > ul > li {
     cursor: pointer;
     color: var(--PRIMARY-TEXT-COLOR);
 }
+
+section.note-detail > button {
+    padding: 0.5rem 1rem;
+    font: inherit;
+    border: none;
+    background-color: red;
+    color: #fff;
+    cursor: pointer;
+}
+
+section.note-detail > button:hover {
+    background-color: #ed4949;
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+
 

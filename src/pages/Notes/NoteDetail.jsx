@@ -1,51 +1,53 @@
 import './NoteDetail.css'
-import { useLocation, Link, Outlet, useParams } from "react-router-dom"
-import { NoteContext } from './NoteLayout'
-import { useContext, useEffect, useState } from "react"
+import { Link, Outlet, useNavigate, useOutletContext, useParams } from "react-router-dom"
+import { useEffect, useState, useContext } from "react"
 import { nanoid } from 'nanoid'
+import { NoteContext } from './NoteLayout'
+
+
 
 export default function NoteDetail() {
+    const navigate = useNavigate()
+    const { setNotes } = useContext(NoteContext)
+    const { id } = useParams()
     const [showInput, setShowInput] = useState(false)
-    const [tags, setTags] = useState([])
-    const [note, setNote] = useState({})
-    const {id} = useParams()
-    const { notes } = useContext(NoteContext)
+    const [note, setNote, updateNote] = useOutletContext()
+    const [tags, setTags] = useState(note.tags)
 
-    useEffect(()=>{
-        fetch(`http://localhost:8000/api/notes/${id}`)
-            .then(res=>{
-                if(!res.ok) {
-                    throw new Error(res.status)
-                }
-                return res.json()
-            })
-            .then(data=>setNote(data))
-            .catch(error => console.error(error))
-    }, [])
+    console.log(note)
+
     useEffect(() => {
-        if (notes) {
-            setNote(notes.find(note => String(note.id) === String(id)))
+        if (tags != note.tags) {
+            const updatedNote = { ...note, tags: tags }
+            setNotes(prevNotes => prevNotes.map(prevNote => String(prevNote.id) === String(id) ? updatedNote : prevNote))
+            setNote(updatedNote)
+            updateNote(updatedNote)
         }
-    }, [notes])
 
-    useEffect(() => {
-        if(note) setTags(note.tags)
-    }, [note])
-
-
-    if (!note) {
-        return <p>No note selected or loading...</p>;
-    }
-
-    console.log(tags)
-
-    const tagDisplay = tags ? tags.map(tag => <li key={nanoid()}>{tag}</li>) : null
+    }, [tags])
 
     function handleClick() {
         setShowInput(prevShowInput => !prevShowInput)
     }
 
+    async function handleDelete() {
+        try {
+            const res = await fetch(`http://localhost:8000/api/notes/${id}/`, {
+                headers: { 'Content-Type': 'application/json' },
+                method: 'DELETE'
+            })
+            if (!res.ok) throw new Error('Failed to delete')
 
+            navigate('..')
+            setNotes(prevNotes => prevNotes.filter(note=>String(note.id) !== String(id)))
+
+        } catch (err) {
+            console.error(err)
+            setHasError(true)
+        }
+    }
+
+    const tagDisplay = tags ? tags.map(tag => <li key={nanoid()}>{tag}</li>) : null
 
     return (
         <section className="note-detail">
@@ -60,6 +62,7 @@ export default function NoteDetail() {
             </ul>
             <h3>{note.subTitle}</h3>
             <p>{note.text}</p>
+            <button onClick={handleDelete}>delete</button>
         </section>
     )
 }
