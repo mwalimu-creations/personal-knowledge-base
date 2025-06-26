@@ -1,16 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { MdEdit } from "react-icons/md";
-import { Outlet, Link, useParams } from "react-router-dom";
+import { Outlet, Link, useParams, } from "react-router-dom";
+import { AppContext } from "../../pages/HomeLayout";
 import LoadingSpinner from '../../components/LoadingSpinner'
 
 export default function NoteDetailLayout() {
     const { id } = useParams()
     const [note, setNote] = useState({})
-    const [loading, setIsLoading] = useState(false)
-    const [hasError, setHasError] = useState(false)
+    const [loading, setLoading] = useState(false)
+    const { setHasError } = useContext(AppContext)
 
     useEffect(() => {
-        setIsLoading(true)
+        setLoading(true)
         fetch(`http://localhost:8000/api/notes/${id}`)
             .then(res => {
                 if (!res.ok) {
@@ -23,7 +24,7 @@ export default function NoteDetailLayout() {
                 console.error(error)
                 setHasError(true)
             })
-            .finally(() => setIsLoading(false))
+            .finally(() => setLoading(false))
     }, [id])
 
     async function updateNote(newNote) {
@@ -34,7 +35,6 @@ export default function NoteDetailLayout() {
                 body: JSON.stringify(newNote)
             })
             if (!res.ok) throw new Error('Failed to update note')
-
         } catch (error) {
             console.error(error)
             setHasError(true)
@@ -46,14 +46,12 @@ export default function NoteDetailLayout() {
             {loading ?
                 <div className="center">
                     <LoadingSpinner />
-                </div> :
-                hasError ?
-                    <h1>An error occurred</h1>
-                    :
-                    <section className="note-detail-layout">
-                        <Link to='edit-note' className="edit-btn"><MdEdit /></Link>
-                        <Outlet context={[note, setNote, updateNote, setHasError]} />
-                    </section>
+                </div>
+                :
+                <section className="note-detail-layout">
+                    <Link to='edit-note' className="edit-btn"><MdEdit /></Link>
+                    <Outlet context={[note, setNote, updateNote]} />
+                </section>
             }
         </>
     )

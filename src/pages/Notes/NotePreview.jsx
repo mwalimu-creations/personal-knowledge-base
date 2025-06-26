@@ -1,12 +1,12 @@
 import './NotePreview.css'
 import { Link } from 'react-router-dom'
 import { FaPlus } from "react-icons/fa6"
-import { useContext, useEffect, useState } from 'react'
+import { useContext } from 'react'
 import { NoteContext } from './NoteLayout'
 import NoteCardOutline from '../../components/Notes/NoteCardOutline'
 import { nanoid } from 'nanoid'
 
-export default function NotePreviewLayout() {
+export default function NotePreview() {
     const {notes} = useContext(NoteContext)
     
     const previews = notes.map(testNote => <NoteCardOutline
@@ -17,6 +17,7 @@ export default function NotePreviewLayout() {
         tags={testNote.tags}
         id={testNote.id}
     />)
+
     return (
         <>
             <section className="preview">

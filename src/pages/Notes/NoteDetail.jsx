@@ -3,18 +3,19 @@ import { Link, Outlet, useNavigate, useOutletContext, useParams } from "react-ro
 import { useEffect, useState, useContext } from "react"
 import { nanoid } from 'nanoid'
 import { NoteContext } from './NoteLayout'
+import { AppContext } from '../HomeLayout'
 
 
 
 export default function NoteDetail() {
     const navigate = useNavigate()
-    const { setNotes } = useContext(NoteContext)
+    const { setHasError } = useContext(AppContext)
+    const { setNotes, } = useContext(NoteContext)
     const { id } = useParams()
     const [showInput, setShowInput] = useState(false)
-    const [note, setNote, updateNote] = useOutletContext()
+    const [note, setNote, updateNote ] = useOutletContext()
     const [tags, setTags] = useState(note.tags)
 
-    console.log(note)
 
     useEffect(() => {
         if (tags != note.tags) {
@@ -48,6 +49,8 @@ export default function NoteDetail() {
     }
 
     const tagDisplay = tags ? tags.map(tag => <li key={nanoid()}>{tag}</li>) : null
+    console.log('hi')
+    
 
     return (
         <section className="note-detail">

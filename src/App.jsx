@@ -7,6 +7,7 @@ import EditNote from './pages/Notes/EditNote'
 import AddNote from './pages/Notes/AddNote'
 import AddTag from './pages/Notes/AddTag'
 import NotFound from './pages/NotFound'
+import ErrorPage from './pages/ErrorPage'
 export default function App() {
     return (
         <BrowserRouter>

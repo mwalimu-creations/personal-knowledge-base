@@ -2,7 +2,10 @@ import AddOrEditNote from "../../components/Notes/AddOrEditNote";
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { NoteContext } from "./NoteLayout";
+import { AppContext } from "../HomeLayout";
+
 export default function AddNote() {
+    const {setHasError} = useContext(AppContext)
     const { setNotes } = useContext(NoteContext)
     const [noteTitle, setNoteTitle] = useState('')
     const [noteSubtitle, setNoteSubtitle] = useState('')
@@ -18,8 +21,10 @@ export default function AddNote() {
                 body: JSON.stringify(note)
             })
             if (!res.ok) throw new Error('failed to create note')
+            setNotes(prevNotes => [note, ...prevNotes])
         } catch (error) {
             console.error(error)
+            setHasError(true)
         }
     }
 
@@ -30,7 +35,6 @@ export default function AddNote() {
             text: noteText
         }
         createNote(newNote)
-        setNotes(prevNotes => [newNote,...prevNotes])
         navigate(`/notes`)
     }
 

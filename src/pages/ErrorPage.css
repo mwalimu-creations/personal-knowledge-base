@@ -1,0 +1,33 @@
+section.error-page {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+section.error-page > h1 {
+    color: var(--PRIMARY-TEXT-COLOR);
+    margin-top: 1rem;
+}
+
+section.error-page > button {
+    color: var(--SECONDARY-TEXT-COLOR);
+    background-color: rgb(207, 209, 209);
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    border: none;
+    font: inherit;
+    margin-top: 1.5rem;
+}
+
+.error-page-icon {
+    width: 50%;
+}
+
+section.error-page > button:hover {
+    box-shadow: 1px 1px 15px #000;
+}

@@ -14,5 +14,6 @@ a.add-new-note {
     height: 700px;
     overflow-y: scroll;
     overflow-x: hidden;
+    flex-grow: 1;
     /* To-Do: Fix the cards to show x more if they don't fit the width of the card */
 }
